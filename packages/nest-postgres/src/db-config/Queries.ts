@@ -1,0 +1,1 @@
+export const GET_ALL_PERSONS = 'SELECT * FROM person';
