@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import * as DBQueries from '../db-config/Queries';
-import { PgClient } from '../db-config/DBConfig';
+import * as DBQueries from '../database/Queries';
+import { PgClient } from '../database/DBConfig';
 
 @Injectable()
 export class HomeService {
   /* can use async, callback or promise methods to get result */
   async getPersons(): Promise<string> {
-    const result = await PgClient.query(DBQueries.GET_ALL_PERSONS);
-    console.log(result);
+    const { rows } = await PgClient.query(DBQueries.GET_ALL_PERSONS);
+    console.log(rows);
     return 'Hey there! Check console for result';
   }
 
@@ -29,6 +29,7 @@ export class HomeService {
     /**
      * When passing parameterised queries in postgres, the 2nd arg must be an array.
      * this is done to avoid SQL Injection.
+     * Use wildcards in the query array, rather than in the query stmt itself.
      */
 
     PgClient.query(DBQueries.SRCH_PERSON_BY_NAME, [`%${srchText}%`])

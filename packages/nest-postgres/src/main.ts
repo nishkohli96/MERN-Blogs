@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './home/home.module';
-import { PgClient } from './db-config/DBConfig';
+import { PgClient } from './database/DBConfig';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

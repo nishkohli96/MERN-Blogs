@@ -9,3 +9,9 @@ export const PgClient = new Client({
   password: config.DB_PASSWORD,
   port: config.DB_PORT,
 });
+
+/**  
+ * Can config client like in https://node-postgres.com/guides/async-express
+ * 
+ * For large datasets, check out https://node-postgres.com/api/cursor
+ */
