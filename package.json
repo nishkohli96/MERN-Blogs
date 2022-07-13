@@ -10,6 +10,7 @@
 		"start": "concurrently --kill-others-on-fail \"yarn express\" \"yarn react\"",
 		"react": "cd packages\\react && yarn start",
 		"express": "cd packages\\express && yarn start",
-		"fastify": "cd packages\\fastify && yarn start"
+		"fastify": "cd packages\\fastify && yarn start",
+		"nest-postgres": "yarn workspace nest-postgres start"
 	}
 }
