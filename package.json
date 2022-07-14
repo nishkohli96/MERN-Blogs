@@ -8,9 +8,9 @@
 	],
 	"scripts": {
 		"start": "concurrently --kill-others-on-fail \"yarn express\" \"yarn react\"",
-		"react": "cd packages\\react && yarn start",
-		"express": "cd packages\\express && yarn start",
-		"fastify": "cd packages\\fastify && yarn start",
+		"react": "yarn workspace @sdblog/react start",
+		"express": "yarn workspace @sdblog/express start",
+		"fastify": "yarn workspace @sdblog/fastify && start",
 		"nest-postgres": "yarn workspace nest-postgres start"
 	}
 }

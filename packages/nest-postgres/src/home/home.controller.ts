@@ -31,7 +31,7 @@ export class HomeController {
   }
 
   @Get('file')
-  sendSomeFile(@Response({ passthrough: true }) res): StreamableFile {
+  sendSomeFile(@Response({ passthrough: true }) res): any {
     /* Process.cwd() gets path of current working directory */
     const file = createReadStream(
       join(process.cwd(), 'src/assets/Project proposal.pdf'),
@@ -39,6 +39,6 @@ export class HomeController {
     res.set({
       'Content-Type': 'application/json',
     });
-    return new StreamableFile(file);
+    return { fileName: 'Project proposal.pdf', file: new StreamableFile(file) };
   }
 }
