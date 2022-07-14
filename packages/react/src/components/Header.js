@@ -16,7 +16,7 @@ const Header = () => {
 	const user = rootStore.userStore.user;
 	const [avatarURL] = useState(user.avatarURL);
 
-	const [anchorEl, setAnchorEl] = React.useState(null);
+	const [anchorEl, setAnchorEl] = useState(null);
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
 	};

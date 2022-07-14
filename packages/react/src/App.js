@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom';
 import { observer } from 'mobx-react';
 
 import rootStore from './store';
@@ -18,10 +18,10 @@ function App() {
 		<div className="App">
 			<BrowserRouter>
 				<Routes>
-					<Route exact path="/" component={CoverScreen} />
-					<Route path="/signup" component={SignUp} />
-					<Route path="/login" component={Login} />
-					<PrivateRoute
+					<Route exact path="/" element={<CoverScreen />} />
+					<Route path="/signup" element={<SignUp />} />
+					<Route path="/login" element={<Login />} />
+					{/* <PrivateRoute
 						user={user}
 						path="/home"
 						component={HomeScreen}
@@ -35,7 +35,8 @@ function App() {
 						user={user}
 						path="/newpost"
 						component={CreatePost}
-					/>
+					/> */}
+					{/* <Navigate to="/" /> */}
 				</Routes>
 			</BrowserRouter>
 		</div>
