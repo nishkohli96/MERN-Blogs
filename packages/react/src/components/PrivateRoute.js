@@ -1,4 +1,3 @@
-import React from 'react';
 import { Redirect, Route, useLocation } from 'react-router-dom';
 
 const PrivateRoute = ({ component: Component, user, ...otherProps }) => {
@@ -9,9 +8,10 @@ const PrivateRoute = ({ component: Component, user, ...otherProps }) => {
 			{user !== null ? (
 				<Component {...otherProps} />
 			) : (
-				<Redirect
-					to={{ pathname: '/login', state: { from: location } }}
-				/>
+				// <Redirect
+				// 	to={{ pathname: '/login', state: { from: location } }}
+				// />
+				<></>
 			)}
 		</Route>
 	);

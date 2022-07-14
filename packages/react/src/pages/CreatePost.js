@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react';
 
 import { createPost } from '../graphql/queries';
@@ -18,7 +18,7 @@ const CreatePost = () => {
 	const [alertmsg, setAlertMsg] = useState('');
 	const [status, setStatus] = useState('');
 	const [open, setOpen] = React.useState(false);
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const newPost = () => {
 		if (title === '' || text === '') {
@@ -38,7 +38,7 @@ const CreatePost = () => {
 		setAlertMsg('Your Post has been Shared');
 		setStatus('success');
 		setOpen(true);
-		setTimeout(() => history.goBack(), 3000);
+		// setTimeout(() => navigate.goBack(), 3000);
 	};
 
 	return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { observer } from 'mobx-react';
 
 import rootStore from './store';
@@ -17,7 +17,7 @@ function App() {
 	return (
 		<div className="App">
 			<BrowserRouter>
-				<Switch>
+				<Routes>
 					<Route exact path="/" component={CoverScreen} />
 					<Route path="/signup" component={SignUp} />
 					<Route path="/login" component={Login} />
@@ -36,8 +36,7 @@ function App() {
 						path="/newpost"
 						component={CreatePost}
 					/>
-					<Redirect to="/" />
-				</Switch>
+				</Routes>
 			</BrowserRouter>
 		</div>
 	);

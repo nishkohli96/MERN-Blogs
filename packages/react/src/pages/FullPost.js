@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -20,7 +20,7 @@ import Header from '../components/Header';
 
 const FullPost = (Props) => {
 	const classes = useStyles();
-	const history = useHistory();
+	const navigate = useNavigate();
 	const user = rootStore.userStore.user;
 	const postObj = Props.location.state.record;
 
@@ -51,7 +51,7 @@ const FullPost = (Props) => {
 		client.mutate({ mutation: deletePost(postObj._id) });
 		setOpen(false);
 		setAlertOpen(true);
-		setTimeout(() => history.goBack(), 3000);
+		// setTimeout(() => navigate.goBack(), 3000);
 	};
 
 	return (

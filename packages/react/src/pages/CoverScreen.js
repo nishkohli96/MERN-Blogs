@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
 const CoverScreen = () => {
-	const history = useHistory();
+	const navigate = useNavigate();
 	const classes = useStyles();
 
 	return (
@@ -32,7 +32,7 @@ const CoverScreen = () => {
 							<div style={styles.btnDiv}>
 								<Button
 									style={styles.btn}
-									onClick={() => history.push('/signup')}
+									onClick={() => navigate('/signup')}
 								>
 									SignUp
 								</Button>
@@ -40,7 +40,7 @@ const CoverScreen = () => {
 							<div style={styles.btnDiv}>
 								<Button
 									style={styles.btn}
-									onClick={() => history.push('/login')}
+									onClick={() => navigate('/login')}
 								>
 									Login
 								</Button>

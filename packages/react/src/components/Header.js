@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -11,7 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import rootStore from '../store';
 
 const Header = () => {
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	const user = rootStore.userStore.user;
 	const [avatarURL] = useState(user.avatarURL);
@@ -28,7 +28,7 @@ const Header = () => {
 	const logOut = () => {
 		rootStore.userStore.setUser(null);
 		sessionStorage.removeItem('accessToken');
-		history.replace('/');
+		navigate('/');
 	};
 
 	const StyledMenu = withStyles({
@@ -62,7 +62,7 @@ const Header = () => {
 									...styles.headerText,
 									cursor: 'pointer',
 								}}
-								onClick={() => history.replace('/home')}
+								onClick={() => navigate('/home')}
 							>
 								Great Posts from Great Authors
 							</div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { observer } from 'mobx-react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,7 +17,7 @@ import { userLogin } from '../graphql/queries';
 import { client } from '../graphql/ApolloGQL';
 
 const Login = () => {
-	const history = useHistory();
+	const navigate = useNavigate();
 	const classes = useStyles();
 
 	const { register, handleSubmit, errors } = useForm();
@@ -51,7 +51,7 @@ const Login = () => {
 			);
 
 			rootStore.userStore.setUser(res.data.userLogin.data.result);
-			history.push('/home');
+			navigate('/home');
 		} else {
 			setErrorText(res.data.userLogin.message);
 			setErrOpen(true);

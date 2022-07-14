@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
@@ -14,7 +14,7 @@ const HomeScreen = () => {
 	const { loading, error, data } = useQuery(getAllPosts(), {
 		pollInterval: 1000,
 	});
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	if (loading || !data) return <div>Fetching Data... </div>;
 	if (error) {
@@ -34,7 +34,7 @@ const HomeScreen = () => {
 								<div
 									style={styles.cardDiv}
 									onClick={() =>
-										history.push({
+										navigate({
 											pathname: `/@${record.author.userName}/${record.slug}`,
 											state: { record },
 										})
@@ -55,7 +55,7 @@ const HomeScreen = () => {
 				<Fab
 					color="primary"
 					aria-label="add"
-					onClick={() => history.push('/newpost')}
+					onClick={() => navigate.push('/newpost')}
 				>
 					<AddIcon />
 				</Fab>

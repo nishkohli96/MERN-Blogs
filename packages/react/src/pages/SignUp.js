@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as Bcrypt from 'bcryptjs';
 import Avatar from '@material-ui/core/Avatar';
@@ -28,7 +28,7 @@ import '../index.css';
 
 const SignUp = () => {
 	const classes = useStyles();
-	const history = useHistory();
+	const navigate = useNavigate();
 	const [avatarURL, setAvatarURL] = useState('');
 
 	const [severity, setSeverity] = React.useState('');
@@ -90,7 +90,7 @@ const SignUp = () => {
 			setAlertMsg('Account Created');
 			setSeverity('success');
 			setOpen(true);
-			setTimeout(() => history.push('/login'), 3000);
+			// setTimeout(() => navigate.push('/login'), 3000);
 		} else {
 			setAlertMsg(res.data.checkExisting.message);
 			setSeverity('error');
