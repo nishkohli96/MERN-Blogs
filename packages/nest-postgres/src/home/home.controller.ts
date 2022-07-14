@@ -1,4 +1,13 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Query,
+  Response,
+  StreamableFile,
+} from '@nestjs/common';
+import { join } from 'path';
+import { createReadStream } from 'fs';
 import { HomeService } from './home.service';
 import { PersonByIdDTO, PersonQueryDTO } from './types';
 
@@ -19,5 +28,17 @@ export class HomeController {
   @Get('person')
   getPersonBySearch(@Query() query: PersonQueryDTO): string {
     return this.homeService.getPersonBySearch(query.name);
+  }
+
+  @Get('file')
+  sendSomeFile(@Response({ passthrough: true }) res): StreamableFile {
+    /* Process.cwd() gets path of current working directory */
+    const file = createReadStream(
+      join(process.cwd(), 'src/assets/Project proposal.pdf'),
+    );
+    res.set({
+      'Content-Type': 'application/json',
+    });
+    return new StreamableFile(file);
   }
 }

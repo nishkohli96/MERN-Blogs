@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
-import * as DBQueries from '../database/Queries';
-import { PgClient } from '../database/DBConfig';
+import { Injectable, StreamableFile, Response } from '@nestjs/common';
+import { createReadStream } from 'fs';
+import { DBQueries, PgClient } from '../database';
 
 @Injectable()
 export class HomeService {
@@ -40,4 +40,8 @@ export class HomeService {
       .catch((e) => console.error(e.stack));
     return 'Some value';
   }
+
+  // sendSomeFile(res: Response): StreamableFile {
+
+  // }
 }
