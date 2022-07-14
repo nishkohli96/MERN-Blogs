@@ -16,7 +16,7 @@ async function build() {
 		caseSensitive: false,
 	});
 
-	await fastify.register(require('middie'));
+	// await fastify.register(require('middie'));
 	fastify.register(require('fastify-cors'), {});
 
 	mongoose

@@ -61,7 +61,9 @@ async function addnewUser(parent, args) {
 }
 
 async function userLogin(parent, args) {
+	console.log('args: ', args);
 	const user = await checkUserExists(args.email);
+	console.log('user: ', user);
 
 	if (!user) {
 		return {

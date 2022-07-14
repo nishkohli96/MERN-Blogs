@@ -1,18 +1,11 @@
-import { Navigate, Route, useLocation } from 'react-router-dom';
+import { Navigate, Route } from 'react-router-dom';
 
-const PrivateRoute = ({ component: Component, user, ...otherProps }) => {
-	const location = useLocation();
-
+const PrivateRoute = ({ component: Component, user, path }) => {
 	return (
-		<Route {...otherProps}>
-			{user !== null ? (
-				<Component {...otherProps} />
-			) : (
-				<Navigate
-					to={{ pathname: '/login', state: { from: location } }}
-				/>
-			)}
-		</Route>
+		<Route
+			path={path}
+			element={user ? Component : <Navigate to="/" replace />}
+		/>
 	);
 };
 

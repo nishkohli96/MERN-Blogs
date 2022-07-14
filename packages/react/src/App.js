@@ -14,6 +14,8 @@ import CreatePost from './pages/CreatePost';
 function App() {
 	const user = rootStore.userStore.user;
 
+	/*  To keep the history clean, you should set replace prop.
+		This will avoid extra redirects after the user click back. */
 	return (
 		<div className="App">
 			<BrowserRouter>
@@ -21,22 +23,23 @@ function App() {
 					<Route exact path="/" element={<CoverScreen />} />
 					<Route path="/signup" element={<SignUp />} />
 					<Route path="/login" element={<Login />} />
+					<Route path="/home" element={<HomeScreen />} />
 					{/* <PrivateRoute
 						user={user}
 						path="/home"
-						component={HomeScreen}
+						component={<HomeScreen />}
 					/>
 					<PrivateRoute
 						user={user}
 						path="/:userName/:slug"
-						component={FullPost}
+						component={<FullPost />}
 					/>
 					<PrivateRoute
 						user={user}
 						path="/newpost"
-						component={CreatePost}
+						component={<CreatePost />}
 					/> */}
-					{/* <Navigate to="/" /> */}
+					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

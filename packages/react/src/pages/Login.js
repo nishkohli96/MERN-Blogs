@@ -43,6 +43,7 @@ const Login = () => {
 		};
 
 		const res = await client.query({ query: userLogin(reqBody) });
+		console.log('res: ', res);
 
 		if (res.data.userLogin.status === 200) {
 			sessionStorage.setItem(
